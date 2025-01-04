@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styles from "../../scss/order/basket.module.scss";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import styles from '../../scss/order/basket.module.scss';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Basket(props) {
     const [prod, setProd] = useState([]);
     const navigate = useNavigate();
 
-    const email = sessionStorage.getItem("email");
+    const email = sessionStorage.getItem('email');
     const bkURL = process.env.REACT_APP_BACK_URL;
 
     // 장바구니 내역 불러오기
@@ -22,7 +22,7 @@ function Basket(props) {
                 setProd(updatedProd);
             })
             .catch((err) => {
-                console.error("에러발생 : ", err);
+                console.error('에러발생 : ', err);
             });
     }
 
@@ -33,19 +33,14 @@ function Basket(props) {
     // 수량 변경
     const handleQuantityChange = (id, quantity) => {
         const updatedProd = prod.map((item) =>
-            item.bs_product_id === id
-                ? { ...item, quantity: parseInt(quantity, 10) }
-                : item
+            item.bs_product_id === id ? { ...item, quantity: parseInt(quantity, 10) } : item
         );
         setProd(updatedProd);
     };
 
     // 총합계 계산
     const getTotal = () => {
-        return prod.reduce(
-            (sum, product) => sum + product.product_price * product.quantity,
-            0
-        );
+        return prod.reduce((sum, product) => sum + product.product_price * product.quantity, 0);
     };
 
     // 장바구니 정보 삭제
@@ -53,16 +48,16 @@ function Basket(props) {
         axios
             .delete(`${bkURL}/basket/delete/${id}`)
             .then((res) => {
-                alert("삭제되었습니다.");
+                alert('삭제되었습니다.');
                 dataInit();
             })
             .catch((err) => {
-                // console.log('삭제오류 : ', err);
+                console.log('삭제오류 : ', err);
             });
     }
 
     function paymentGo() {
-        navigate("/payment1");
+        navigate('/payment1');
     }
 
     return (
@@ -70,9 +65,7 @@ function Basket(props) {
             {prod.length > 0 ? (
                 <>
                     <h2 className={styles.shoppingHead}>장바구니</h2>
-                    <div className={styles.shoppingHead2}>
-                        ({prod.length} 개의 제품 / 장바구니에 담긴 제품 개수)
-                    </div>
+                    <div className={styles.shoppingHead2}>({prod.length} 개의 제품 / 장바구니에 담긴 제품 개수)</div>
 
                     <table className={styles.table}>
                         <thead>
@@ -87,40 +80,23 @@ function Basket(props) {
                         <tbody>
                             {prod.map((pp) => {
                                 // 각 합계 계산
-                                const totalPrice =
-                                    pp.product_price * pp.quantity;
+                                const totalPrice = pp.product_price * pp.quantity;
 
                                 return (
                                     <tr key={pp.bs_product_id}>
                                         <td>
                                             <div>{pp.product_name_kor}</div>
-                                            <div className={styles.productEng}>
-                                                {pp.product_name_eng}
-                                            </div>
+                                            <div className={styles.productEng}>{pp.product_name_eng}</div>
                                             <div>{pp.product_volume}</div>
                                         </td>
-                                        <td>
-                                            ₩{" "}
-                                            {pp.product_price.toLocaleString()}
-                                        </td>
+                                        <td>₩ {pp.product_price.toLocaleString()}</td>
                                         <td>
                                             <select
                                                 value={pp.quantity}
-                                                onChange={(e) =>
-                                                    handleQuantityChange(
-                                                        pp.bs_product_id,
-                                                        e.target.value
-                                                    )
-                                                }
+                                                onChange={(e) => handleQuantityChange(pp.bs_product_id, e.target.value)}
                                             >
-                                                {Array.from(
-                                                    { length: 8 },
-                                                    (_, i) => i + 1
-                                                ).map((qty) => (
-                                                    <option
-                                                        key={qty}
-                                                        value={qty}
-                                                    >
+                                                {Array.from({ length: 8 }, (_, i) => i + 1).map((qty) => (
+                                                    <option key={qty} value={qty}>
                                                         {qty}
                                                     </option>
                                                 ))}
@@ -128,12 +104,7 @@ function Basket(props) {
                                         </td>
                                         <td>₩ {totalPrice.toLocaleString()}</td>
                                         <td>
-                                            <button
-                                                onClick={() =>
-                                                    delBasket(pp.bs_id)
-                                                }
-                                                className={styles.deleteBtn}
-                                            >
+                                            <button onClick={() => delBasket(pp.bs_id)} className={styles.deleteBtn}>
                                                 삭제
                                             </button>
                                         </td>
@@ -144,13 +115,8 @@ function Basket(props) {
                     </table>
 
                     <div className={styles.footer}>
-                        <div className={styles.total}>
-                            총합계: ₩ {getTotal().toLocaleString()}
-                        </div>
-                        <button
-                            onClick={paymentGo}
-                            className={styles.paymentBtn}
-                        >
+                        <div className={styles.total}>총합계: ₩ {getTotal().toLocaleString()}</div>
+                        <button onClick={paymentGo} className={styles.paymentBtn}>
                             주문서 작성
                         </button>
                     </div>

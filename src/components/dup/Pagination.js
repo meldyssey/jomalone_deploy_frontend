@@ -17,7 +17,7 @@ const Pagination = ({
     const pageChange = (page) => {
         setCurPage(page);
     };
-    // console.log(curPage);
+    console.log(curPage);
 
     return (
         <div className={styles.pagination}>

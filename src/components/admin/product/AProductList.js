@@ -22,7 +22,7 @@ const AProductList = () => {
         axios
             .get(`${bkURL}/admin/product/`)
             .then((res) => {
-                // console.log("서버 다녀옴", res.data);
+                console.log("서버 다녀옴", res.data);
                 setProduct(res.data);
             })
             .catch((err) => {
@@ -36,11 +36,11 @@ const AProductList = () => {
 
     const searchGo = (me) => {
         me.preventDefault();
-        // console.log("submitGo 진입");
+        console.log("submitGo 진입");
         const frmData = new FormData(document.myFrm);
-        // console.log(frmData);
+        console.log(frmData);
         const data = Object.fromEntries(frmData);
-        // console.log(data);
+        console.log(data);
 
         Object.keys(data).forEach((key) => {
             if (data[key] === "") {
@@ -56,7 +56,7 @@ const AProductList = () => {
         axios
             .post(`${bkURL}/admin/product/search`, data)
             .then((res) => {
-                // console.log("검색 완료");
+                console.log("검색 완료");
                 setProduct(res.data);
                 setText("해당하는 제품이 존재하지 않습니다.");
             })

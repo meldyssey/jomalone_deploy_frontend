@@ -12,18 +12,18 @@ const DetailTop = () => {
     const [product, setProduct] = useState(null);
 
     const email = sessionStorage.getItem("email");
-    // // console.log(product_opt_id);
+    // console.log(product_opt_id);
 
     const productGetAxios = () => {
-        // // console.log("product_scent : ", product_scent);
+        // console.log("product_scent : ", product_scent);
         if (!product_opt_id) {
-            // console.log("데이터 없음");
+            console.log("데이터 없음");
             return;
         }
         axios
             .get(`${bkURL}/product/detail/${product_opt_id}`)
             .then((res) => {
-                // // console.log(res.data);
+                // console.log(res.data);
                 setProduct(res.data);
             })
             .catch((err) => {
@@ -36,20 +36,20 @@ const DetailTop = () => {
     }, [product_opt_id]);
 
     const basketGo = (product_opt_id) => {
-        // // console.log(email);
+        // console.log(email);
         if (!email) {
             navigate("/signIn");
         } else {
             const params = { bs_email: email, bs_product_id: product_opt_id };
-            // // console.log(params);
+            // console.log(params);
             axios
                 .get(`${bkURL}/product/basket`, { params })
                 .then((res) => {
-                    // // console.log(res.data);
+                    // console.log(res.data);
                     const basketItem = res.data.find(
                         (item) => item.bs_product_id == product_opt_id
                     );
-                    // // console.log(basketItem);
+                    // console.log(basketItem);
                     if (basketItem) {
                         const useConfirm = window.confirm(
                             "이미 장바구니에 추가된 상품입니다. 장바구니에서 제품을 확인하시겠습니까?"
@@ -63,7 +63,7 @@ const DetailTop = () => {
                             .post(`${bkURL}/product/basket`, data)
 
                             .then((res) => {
-                                // // console.log("게시물 등록 완료", res.data);
+                                // console.log("게시물 등록 완료", res.data);
                                 const useConfirm = window.confirm(
                                     "장바구니에 제품이 담겼습니다. 장바구니에서 제품을 확인하시겠습니까?"
                                 );

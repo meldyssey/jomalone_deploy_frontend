@@ -22,7 +22,7 @@ function AdminChk() {
     if (email === "admin@jomalone.kr" && customerName === "관리자") {
         return <Admin />;
     } else {
-        // console.log("일반 고객이므로 어드민 접근불가");
+        console.log("일반 고객이므로 어드민 접근불가");
         return <></>;
     }
 }

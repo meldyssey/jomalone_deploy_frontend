@@ -52,12 +52,12 @@ const AProductRegister = () => {
 
     const submitGo = (me) => {
         me.preventDefault();
-        // // console.log("submitGo 진입");
+        // console.log("submitGo 진입");
         const frmData = new FormData(document.myFrm);
-        // // console.log(frmData);
+        // console.log(frmData);
         const data = Object.fromEntries(frmData);
-        // // console.log(data);
-        // // console.log(korName);
+        // console.log(data);
+        // console.log(korName);
 
         //없는 값은 data null로 작성
         Object.keys(data).forEach((key) => {
@@ -122,11 +122,11 @@ const AProductRegister = () => {
         axios
             .post(`${bkURL}/admin/product/register`, data)
             .then((res) => {
-                // console.log(
+                console.log(
                     "제품 등록 완료했습니다. 해당 제품의 옵션을 등록해주세요.",
                     res.data.newId
                 );
-                // console.log(res.data.newId);
+                console.log(res.data.newId);
 
                 alert(
                     "제품 등록 완료했습니다. 해당 제품의 옵션을 등록해주세요."

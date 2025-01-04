@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import styles from "../../../scss/admin/AdminList.module.scss";
-import Pagination from "../../dup/Pagination";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import styles from '../../../scss/admin/AdminList.module.scss';
+import Pagination from '../../dup/Pagination';
 
 const bkURL = process.env.REACT_APP_BACK_URL;
+
+
+
+
 
 const OneToOneList = () => {
     const [onetoone, setOnetoone] = useState([]);
@@ -22,10 +26,10 @@ const OneToOneList = () => {
     const fetchOnetoone = async () => {
         try {
             const response = await axios.get(`${bkURL}/onetoone`);
-            // console.log('응답 데이터:', response.data); // 데이터 구조 확인
+            console.log('응답 데이터:', response.data); // 데이터 구조 확인
             setOnetoone(response.data.inquiries); // 서버에서 받은 데이터를 onetoone에 저장
         } catch (error) {
-            console.error("Error fetching onetoone:", error);
+            console.error('Error fetching onetoone:', error);
         }
     };
 
@@ -39,6 +43,7 @@ const OneToOneList = () => {
 
     return (
         <div className={styles.list}>
+
             <table>
                 <tr>
                     <td>번호</td>
@@ -49,19 +54,14 @@ const OneToOneList = () => {
                 </tr>
 
                 {Array.isArray(onetoone) && onetoone.length > 0 ? (
-                    curOneToOne.map((item, i) => (
+                    curOneToOne.map((item,i) => (
                         <tr key={item.post_no}>
-                            <td>{(curPage - 1) * itemsPerPage + (i + 1)}</td>
+                           <td>{(curPage - 1) * itemsPerPage + (i + 1)}</td>
                             <td>{item.post_title}</td>
                             <td>{item.email}</td>
                             <td>{item.reply_status}</td>
                             <td>
-                                <button
-                                    className={styles.changebutton}
-                                    onClick={() =>
-                                        handleDetailClick(item.post_no)
-                                    }
-                                >
+                                <button className={styles.changebutton} onClick={() => handleDetailClick(item.post_no)}>
                                     상세보기
                                 </button>
                             </td>

@@ -10,19 +10,19 @@ const DetailVolume = ({ product_id }) => {
     const [volume, setVolume] = useState([]);
     const { product_opt_id } = useParams();
 
-    // // console.log(product_opt_id);
+    // console.log(product_opt_id);
 
     const volumeGetAxios = () => {
-        // // console.log("product_scent : ", product_scent);
+        // console.log("product_scent : ", product_scent);
 
         if (!product_id) {
-            // console.log("데이터 없음");
+            console.log("데이터 없음");
             return;
         }
         axios
             .get(`${bkURL}/product/volume/${product_id}`)
             .then((res) => {
-                // console.log(res.data);
+                console.log(res.data);
                 setVolume(res.data);
             })
             .catch((err) => {
@@ -45,7 +45,7 @@ const DetailVolume = ({ product_id }) => {
                 //         : ""
                 // }
 
-                // // console.log(
+                // console.log(
                 //     volume.product_opt_id,
                 //     volume.product_opt_id == product_opt_id
                 // );
