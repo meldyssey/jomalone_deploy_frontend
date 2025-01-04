@@ -10,13 +10,13 @@ const DetailTasting = () => {
     const [product, setProduct] = useState(null);
     const productGetAxios = () => {
         if (!product_opt_id) {
-            console.log("데이터 없음");
+            // console.log("데이터 없음");
             return;
         }
         axios
             .get(`${bkURL}/product/detail/${product_opt_id}`)
             .then((res) => {
-                // console.log(res.data);
+                // // console.log(res.data);
                 setProduct(res.data);
             })
             .catch((err) => {

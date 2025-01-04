@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import styles from '../../../scss/admin/orderDetail.module.scss';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import styles from "../../../scss/admin/orderDetail.module.scss";
 
 function AOrderStatusList(props) {
     const [order, setOrder] = useState([]);
     const [customer, setCustomer] = useState([]);
-    const orderId = window.location.pathname.split('/').pop();
+    const orderId = window.location.pathname.split("/").pop();
 
     const bkURL = process.env.REACT_APP_BACK_URL;
 
-    // console.log(orderId)
+    // // console.log(orderId)
 
     useEffect(() => {
         axios
             .get(`${bkURL}/admin/order/detail/${orderId}`)
             .then((res) => {
-                // console.log('갔다옴 : ', res.data.order,res.data.customer)
+                // // console.log('갔다옴 : ', res.data.order,res.data.customer)
                 setOrder(res.data.order);
                 setCustomer(res.data.customer);
             })
             .catch((err) => {
-                console.error('에러발생 : ', err);
+                console.error("에러발생 : ", err);
             });
     }, []);
 
@@ -31,7 +31,10 @@ function AOrderStatusList(props) {
     };
     // 총 가격 계산
     const orderTotal = () => {
-        return order.reduce((total, product) => total + product.product_price, 0);
+        return order.reduce(
+            (total, product) => total + product.product_price,
+            0
+        );
     };
 
     if (!order || order.length === 0) {
@@ -55,7 +58,9 @@ function AOrderStatusList(props) {
                         <tr key={i}>
                             <td>{i + 1}</td>
                             <td className={styles.imgTag}>
-                                <img src={`${bkURL}/imgs/product/${od.product_upSystem}`} />
+                                <img
+                                    src={`${bkURL}/imgs/product/${od.product_upSystem}`}
+                                />
                             </td>
                             <td>
                                 <Link
@@ -74,8 +79,12 @@ function AOrderStatusList(props) {
                 })}
                 <tr>
                     <td colSpan={6}>
-                        <div className={styles.price}>총 수량 : {getTotalQuantity()}</div>
-                        <div className={styles.price}>총 가격 : {orderTotal().toLocaleString()}원</div>
+                        <div className={styles.price}>
+                            총 수량 : {getTotalQuantity()}
+                        </div>
+                        <div className={styles.price}>
+                            총 가격 : {orderTotal().toLocaleString()}원
+                        </div>
                     </td>
                 </tr>
             </table>

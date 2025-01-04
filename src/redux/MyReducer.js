@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import prod from "./Prod";
 
-// console.log(prod);
+// // console.log(prod);
 
 const MyReducer = combineReducers({
     prod,

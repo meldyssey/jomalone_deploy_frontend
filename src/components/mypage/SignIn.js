@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../../scss/mypage/SignIn.module.scss';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "../../scss/mypage/SignIn.module.scss";
+import axios from "axios";
 
 function SignIn() {
-    const [email, setEmail] = useState(''); // 이건 input에 있는 email value
-    const [password, setPassword] = useState(''); // 비밀번호 입력값 상태
+    const [email, setEmail] = useState(""); // 이건 input에 있는 email value
+    const [password, setPassword] = useState(""); // 비밀번호 입력값 상태
     const [showPassword, setshowPassword] = useState(false);
     const bkURL = process.env.REACT_APP_BACK_URL;
 
     const passwordHide = () => {
         //비밀번호 숨기기 아이콘 클릭시마다 상태 변경
-        setshowPassword(prevState => !prevState);
+        setshowPassword((prevState) => !prevState);
     };
 
     // 로그인 요청 처리 함수
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // 기본 동작 방지
 
         // 이메일과 비밀번호 공란이면 얼럿
         if (!email || !password) {
-            alert('이메일과 비밀번호를 입력해주세요.');
+            alert("이메일과 비밀번호를 입력해주세요.");
             return;
         }
 
@@ -38,10 +38,16 @@ function SignIn() {
             }
 
             // 서버 응답에서 데이터 추출
-            const { sessionToken, email: returnedEmail, customer_name } = res.data;
+            const {
+                sessionToken,
+                email: returnedEmail,
+                customer_name,
+            } = res.data;
             if (!sessionToken || !returnedEmail || !customer_name) {
                 //세션토큰이 없거나, 이메일이나 이름이 없는 경우라면
-                alert('로그인에 실패하였습니다. 이메일과 비밀번호를 다시 확인해주세요.');
+                alert(
+                    "로그인에 실패하였습니다. 이메일과 비밀번호를 다시 확인해주세요."
+                );
                 return;
             }
 
@@ -49,25 +55,25 @@ function SignIn() {
             alert(`${customer_name}님 로그인되었습니다.`);
 
             // 세션 저장
-            sessionStorage.setItem('sessionToken', sessionToken); // 세션 토큰 저장
-            sessionStorage.setItem('email', returnedEmail); // 이메일 저장
-            sessionStorage.setItem('customerName', customer_name); // 고객 이름 저장
+            sessionStorage.setItem("sessionToken", sessionToken); // 세션 토큰 저장
+            sessionStorage.setItem("email", returnedEmail); // 이메일 저장
+            sessionStorage.setItem("customerName", customer_name); // 고객 이름 저장
 
             // 홈으로 이동
-            if (email === 'admin@jomalone.kr' && customer_name === '관리자') {
-                console.log('관리자 계정으로 확인됨');
+            if (email === "admin@jomalone.kr" && customer_name === "관리자") {
+                // console.log('관리자 계정으로 확인됨');
                 /* eslint-disable no-restricted-globals */
-                location.href = '/admin';
+                location.href = "/admin";
                 /* eslint-enable no-restricted-globals */
             } else {
-                console.log('일반 고객 계정으로 확인됨');
+                // console.log('일반 고객 계정으로 확인됨');
                 /* eslint-disable no-restricted-globals */
-                location.href = '/';
+                location.href = "/";
                 /* eslint-enable no-restricted-globals */
             }
         } catch (err) {
-            console.error('로그인 요청 오류 :', err);
-            alert('정확한 정보를 입력해주세요.');
+            console.error("로그인 요청 오류 :", err);
+            alert("정확한 정보를 입력해주세요.");
         }
     };
 
@@ -87,27 +93,55 @@ function SignIn() {
                         <div>
                             <div className={styles.kakao}>
                                 <Link to="#">
-                                    <img src="/imgs/sign/kakao.svg" alt="카카오" />
+                                    <img
+                                        src="/imgs/sign/kakao.svg"
+                                        alt="카카오"
+                                    />
                                 </Link>
                             </div>
                             <div className={styles.naver}>
                                 <Link to="#">
-                                    <img src="/imgs/sign/naver.png" alt="네이버" />
+                                    <img
+                                        src="/imgs/sign/naver.png"
+                                        alt="네이버"
+                                    />
                                 </Link>
                             </div>
                         </div>
                         <div className={styles.or}>또는</div>
-                        <form onSubmit={handleSubmit} className={styles.loginForm}>
+                        <form
+                            onSubmit={handleSubmit}
+                            className={styles.loginForm}
+                        >
                             <input
                                 type="text"
                                 className={styles.email}
                                 placeholder="*이메일"
                                 value={email}
-                                onChange={e => setEmail(e.target.value)} // 이메일 입력값 업데이트
+                                onChange={(e) => setEmail(e.target.value)} // 이메일 입력값 업데이트
                             />
-                            <input type={showPassword ? 'text' : 'password'} className={styles.pw} value={password} placeholder="*비밀번호" onChange={e => setPassword(e.target.value)} />
-                            <div className={styles.pwIcon} onClick={passwordHide}>
-                                {showPassword ? <img className={styles.crossed} src="/imgs/sign/pwIcon.svg" /> : <img className={styles.notCrossed} src="/imgs/sign/pwIcon_cross.svg" />}
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                className={styles.pw}
+                                value={password}
+                                placeholder="*비밀번호"
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <div
+                                className={styles.pwIcon}
+                                onClick={passwordHide}
+                            >
+                                {showPassword ? (
+                                    <img
+                                        className={styles.crossed}
+                                        src="/imgs/sign/pwIcon.svg"
+                                    />
+                                ) : (
+                                    <img
+                                        className={styles.notCrossed}
+                                        src="/imgs/sign/pwIcon_cross.svg"
+                                    />
+                                )}
                             </div>
                             <div className={styles.pwfind}>
                                 <Link to="/findPw">비밀번호 찾기</Link>

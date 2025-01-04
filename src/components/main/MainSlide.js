@@ -23,7 +23,7 @@ function MainSlide(props) {
                     disableOnInteraction: false, // 사용자 상호작용 후에도 자동재생 계속
                 }}
                 loop={true} // 슬라이드를 무한 반복
-                onSwiper={(swiper) => console.log(swiper)}
+                onSwiper={(swiper) => // console.log(swiper)}
             >
                 <SwiperSlide>
                     <Link to={'/bath-body'}>

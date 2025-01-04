@@ -18,12 +18,12 @@ const DetailWrap = () => {
     const [comp, setComp] = useState(null);
     const [product, setProduct] = useState(null);
 
-    // console.log(product_opt_id);
+    // // console.log(product_opt_id);
 
     const [best, setBest] = useState([]);
 
     const productGetAxios = () => {
-        // console.log("product_scent : ", product_scent);
+        // // console.log("product_scent : ", product_scent);
 
         axios
             .get(`${bkURL}/product/detail/${product_opt_id}`)
@@ -42,13 +42,13 @@ const DetailWrap = () => {
         axios
             .get(`${bkURL}/product/`)
             .then((res) => {
-                // console.log('서버 다녀옴', res.data);
+                // // console.log('서버 다녀옴', res.data);
                 let curProduct = res.data.filter(
                     (item) =>
                         item.product_special == "Best Seller" &&
                         item.product_opt_id != product_opt_id
                 );
-                // console.log(curProduct);
+                // // console.log(curProduct);
                 setBest(curProduct);
             })
             .catch((err) => {
@@ -58,14 +58,14 @@ const DetailWrap = () => {
 
     useEffect(() => {
         if (!product_opt_id) {
-            console.log("데이터 없음");
+            // console.log("데이터 없음");
             return;
         }
         productGetAxios();
         bestGetAxios();
         window.scrollTo(0, 0);
 
-        // console.log(product.product_category_id);
+        // // console.log(product.product_category_id);
     }, [product_opt_id]);
 
     useEffect(() => {
@@ -75,7 +75,7 @@ const DetailWrap = () => {
                     <DetailTasting /> <ColognesUse />
                 </>
             );
-            // console.log(product);
+            // // console.log(product);
         } else if (product && product.product_category_id == 2) {
             setComp(<CandleUse />);
         } else {
@@ -83,7 +83,7 @@ const DetailWrap = () => {
         }
     }, [product]);
 
-    // console.log(comp);
+    // // console.log(comp);
 
     return (
         <div>

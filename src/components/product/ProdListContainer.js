@@ -21,7 +21,7 @@ export default function ProdListContainer() {
         dispatch(getProdStart());
         try {
             const res = await axios.get(`${bkURL}/product`);
-            console.log("서버 다녀옴", res.data);
+            // console.log("서버 다녀옴", res.data);
             dispatch(getProdSuccess(res.data));
         } catch (error) {
             console.error("Axios 에러 발생:", error);
@@ -29,7 +29,7 @@ export default function ProdListContainer() {
         }
     }, [dispatch]);
 
-    // console.log("Fail is a function:", typeof fail);
+    // // console.log("Fail is a function:", typeof fail);
 
     // 컴포넌트 출력, props 전달
     return <AllProduct prod={prod} getProd={getProd} />;
