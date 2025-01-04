@@ -17,10 +17,7 @@ export default function ProdListContainer() {
         dispatch(getProdStart());
         try {
             const res = await axios.get(`${bkURL}/product`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                withCredentials: true, // 필요한 경우 추가
+                withCredentials: true,
             });
             console.log("서버 다녀옴", res.data);
             dispatch(getProdSuccess(res.data));
