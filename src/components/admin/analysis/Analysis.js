@@ -24,7 +24,7 @@ const Analysis = () => {
 
     useEffect(() => {
         fetchData(timePeriod);
-        console.log('최종 chartData:', chartData);
+        // console.log('최종 chartData:', chartData);
     }, [timePeriod]);
 
     const formatDate = (dateString, period) => {
@@ -46,9 +46,9 @@ const Analysis = () => {
         try {
             const response = await axios.get(`${bkURL}/analysis/${period}`);
             const data = response.data;
-            console.log('data:', data);
+            // console.log('data:', data);
             const dateData = data.map((item) => item.order_date);
-            console.log('dateData:', dateData);
+            // console.log('dateData:', dateData);
 
             let labels = [];
             let amount = [];
@@ -73,7 +73,7 @@ const Analysis = () => {
                 ],
             });
 
-            console.log('chartData: ', chartData);
+            // console.log('chartData: ', chartData);
         } catch (err) {
             console.error('데이터 가져오기 실패: ', err);
         }

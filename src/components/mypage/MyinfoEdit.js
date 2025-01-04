@@ -44,8 +44,8 @@ const MyinfoEdit = () => {
                     } else {
                         setUserInfo({ ...data, birthdate: '' }); // birthdate가 없으면 빈 값으로 설정
                     }
-                    console.log('세션 토큰 :', sessionStorage.getItem('sessionToken'));
-                    console.log('이메일 :', sessionStorage.getItem('email'));
+                    // console.log('세션 토큰 :', sessionStorage.getItem('sessionToken'));
+                    // console.log('이메일 :', sessionStorage.getItem('email'));
                 })
                 .catch(error => {
                     console.error('세션 토큰 확인불가', error);

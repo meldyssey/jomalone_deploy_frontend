@@ -15,7 +15,7 @@ export default function ProductSwiper({ product }) {
     const [curProduct, setCurProduct] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        console.log('ProductSwiper 동작');
+        // console.log('ProductSwiper 동작');
         if (!product) {
             console.log(`상품이 없습니다`);
             return;

@@ -122,11 +122,11 @@ const AProductRegister = () => {
         axios
             .post(`${bkURL}/admin/product/register`, data)
             .then((res) => {
-                console.log(
-                    "제품 등록 완료했습니다. 해당 제품의 옵션을 등록해주세요.",
-                    res.data.newId
-                );
-                console.log(res.data.newId);
+                // console.log(
+                //     "제품 등록 완료했습니다. 해당 제품의 옵션을 등록해주세요.",
+                //     res.data.newId
+                // );
+                // console.log(res.data.newId);
 
                 alert(
                     "제품 등록 완료했습니다. 해당 제품의 옵션을 등록해주세요."

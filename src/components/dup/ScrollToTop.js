@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
-    console.log("ScrollToTop component rendered");
+    // console.log("ScrollToTop component rendered");
 
     const { pathname } = useLocation();
 
@@ -16,9 +16,9 @@ const ScrollToTop = () => {
         // console.log("Page height:", document.body.scrollHeight);
         // console.log("Viewport height:", window.innerHeight);
 
-        console.log("Before scroll:", window.scrollY);
+        // console.log("Before scroll:", window.scrollY);
         window.scrollTo(0, 0);
-        console.log("After scroll:", window.scrollY);
+        // console.log("After scroll:", window.scrollY);
     }, [pathname]);
 
     return <></>;

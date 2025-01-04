@@ -13,7 +13,7 @@ const AProductDetailOpt = () => {
         axios
             .get(`${bkURL}/admin/product/detail/option/${product_id}`)
             .then((res) => {
-                console.log('서버 다녀옴', res.data);
+                // console.log('서버 다녀옴', res.data);
                 setProductOpt(res.data);
             })
             .catch((err) => {
@@ -22,7 +22,7 @@ const AProductDetailOpt = () => {
     };
     useEffect(() => {
         if (!product_id) {
-            console.log('id 없음');
+            // console.log('id 없음');
             return;
         }
         productListGetAxios();

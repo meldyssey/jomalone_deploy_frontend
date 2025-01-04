@@ -14,7 +14,7 @@ const AProductModify = () => {
 
     const productGetAxios = () => {
         if (!product_id) {
-            console.log('id 없음');
+            // console.log('id 없음');
             return;
         }
         axios
@@ -47,11 +47,11 @@ const AProductModify = () => {
 
     const submitGo = (me) => {
         me.preventDefault();
-        console.log('submitGo 진입');
+        // console.log('submitGo 진입');
         const frmData = new FormData(document.myFrm);
-        console.log(frmData);
+        // console.log(frmData);
         const data = Object.fromEntries(frmData);
-        console.log(data);
+        // console.log(data);
 
         //없는 값은 data null로 작성
         Object.keys(data).forEach((key) => {
@@ -118,7 +118,7 @@ const AProductModify = () => {
     const stChange = (bname, me) => {
         // console.log("stChange");
         setProduct({ ...product, [bname]: me.value });
-        console.log(product);
+        // console.log(product);
     };
 
     const chkSelectModule = (bname, arr) => {

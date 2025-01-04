@@ -19,12 +19,12 @@ const ColognesScent = () => {
     const [comp, setComp] = useState(null);
     const [colognes, setColognes] = useState([]);
     const colognesGetAxios = () => {
-        console.log('product_scent : ', product_scent);
+        // console.log('product_scent : ', product_scent);
 
         axios
             .get(`${bkURL}/product/colognes`)
             .then((res) => {
-                console.log('서버 다녀옴', res.data);
+                // console.log('서버 다녀옴', res.data);
                 // console.log(product_scent);
                 // console.log(curPath); // "/path"
 
@@ -36,7 +36,7 @@ const ColognesScent = () => {
                 // );
 
                 let curProduct = res.data.filter((item) => item.product_volume == '100ml');
-                console.log(curProduct);
+                // console.log(curProduct);
 
                 if (product_scent) {
                     curProduct = res.data.filter(
@@ -54,9 +54,9 @@ const ColognesScent = () => {
         window.scrollTo(0, 0);
     }, [product_scent]);
 
-    console.log(product_scent);
+    // console.log(product_scent);
     useEffect(() => {
-        console.log(comp);
+        // console.log(comp);
         if (!product_scent) {
             setComp(<ColognesTotal />);
         }

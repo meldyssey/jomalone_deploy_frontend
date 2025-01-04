@@ -15,12 +15,12 @@ const OneToOneDetail = () => {
     // 서버에서 특정 문의 상세 정보를 가져오는 함수
     const fetchOnetooneDetail = async () => {
         if (!id) {
-            console.log('id없음');
+            // console.log('id없음');
             return;
         }
         try {
             const response = await axios.get(`${bkURL}/onetoone/${id}`);
-            console.log(response.data);
+            // console.log(response.data);
 
             setOnetoone(response.data); // 서버에서 받은 데이터를 상태에 저장
         } catch (error) {
@@ -45,12 +45,12 @@ const OneToOneDetail = () => {
     }
 
     const statusChgGo = () => {
-        console.log('statusChgGo 진입');
-        console.log(onetoone);
+        // console.log('statusChgGo 진입');
+        // console.log(onetoone);
         axios
             .put(`${bkURL}/onetoone/${id}`, onetoone)
             .then((res) => {
-                console.log('제품 정보 수정 완료했습니다.');
+                // console.log('제품 정보 수정 완료했습니다.');
 
                 alert('상태 수정을 완료했습니다.');
                 fetchOnetooneDetail();
@@ -62,7 +62,7 @@ const OneToOneDetail = () => {
     const stChange = (bname, me) => {
         // console.log("stChange");
         setOnetoone({ ...onetoone, [bname]: me.value });
-        console.log(onetoone);
+        // console.log(onetoone);
     };
     const chkSelectModule = (bname, arr) => {
         const ret = [];

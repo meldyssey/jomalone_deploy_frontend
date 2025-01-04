@@ -20,7 +20,7 @@ const DiffuserHomeWrap = () => {
     const [diffusers, setDiffusers] = useState([]);
 
     const colognesGetAxios = () => {
-        console.log("product_scent : ", product_scent);
+        // console.log("product_scent : ", product_scent);
 
         axios
             .get(`${bkURL}/product/home-scents/diffusers`)
@@ -51,12 +51,12 @@ const DiffuserHomeWrap = () => {
     };
     useEffect(() => {
         colognesGetAxios();
-        console.log(diffusers);
+        // console.log(diffusers);
     }, [product_scent]);
 
-    console.log(product_scent);
+    // console.log(product_scent);
     useEffect(() => {
-        console.log(comp);
+        // console.log(comp);
         if (!product_scent) {
             setComp(<DiffuserTotal />);
         }

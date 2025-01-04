@@ -20,7 +20,7 @@ const ColognesSize = () => {
             .then((res) => {
                 // console.log("서버 다녀옴", res.data);
                 // console.log(product_scent);
-                console.log(curPath); // "/path"
+                // console.log(curPath); // "/path"
 
                 // console.log(
                 //     res.data.filter((item) => {

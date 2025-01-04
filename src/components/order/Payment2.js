@@ -44,7 +44,7 @@ function Payment2(props) {
         }
         setData(myData);
         setOrder(ordersData);
-        console.log('myData', myData.order_msg);
+        // console.log('myData', myData.order_msg);
         dataInit();
     }, []);
 
@@ -99,7 +99,7 @@ function Payment2(props) {
             })),
             status: '주문완료',
         };
-        console.log(orderPayload);
+        // console.log(orderPayload);
 
         axios
             .post(`${bkURL}/payment2/join/${email}`, orderPayload)

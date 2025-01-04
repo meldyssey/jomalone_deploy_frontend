@@ -26,7 +26,7 @@ const OneToOneList = () => {
     const fetchOnetoone = async () => {
         try {
             const response = await axios.get(`${bkURL}/onetoone`);
-            console.log('응답 데이터:', response.data); // 데이터 구조 확인
+            // console.log('응답 데이터:', response.data); // 데이터 구조 확인
             setOnetoone(response.data.inquiries); // 서버에서 받은 데이터를 onetoone에 저장
         } catch (error) {
             console.error('Error fetching onetoone:', error);

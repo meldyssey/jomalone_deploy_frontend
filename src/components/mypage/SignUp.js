@@ -104,7 +104,7 @@ function SignUp() {
             return; // 에러가 있으면 요청 중단
         }
 
-        console.log(formData);
+        // console.log(formData);
 
         try {
             const customerData = { ...formData, requiredAgree: 1 };
@@ -153,7 +153,7 @@ function SignUp() {
             const res = await axios.get(`${bkURL}/signUp/checkEmail`, {
                 params: { email }, // GET 요청에서 데이터를 전달할 때는 params 사용
             });
-            console.log('Axios 요청 전송:', { email });
+            // console.log('Axios 요청 전송:', { email });
 
             if (res.data.exists) {
                 setemailChkFinish(false); // 중복 확인 실패 시 false로 설정

@@ -14,7 +14,7 @@ const AProductDetail = () => {
         axios
             .get(`${bkURL}/admin/product/detail/${product_id}`)
             .then((res) => {
-                console.log('서버 다녀옴', res.data);
+                // console.log('서버 다녀옴', res.data);
                 setProduct(res.data);
             })
             .catch((err) => {
@@ -23,7 +23,7 @@ const AProductDetail = () => {
     };
     useEffect(() => {
         if (!product_id) {
-            console.log('id 없음');
+            // console.log('id 없음');
             return;
         }
         productListGetAxios();

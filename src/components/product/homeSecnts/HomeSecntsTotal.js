@@ -15,7 +15,7 @@ const HomeSecntsTotal = () => {
             .get(`${bkURL}/product/home-scents/candles`)
             .then((res) => {
                 let curProduct = res.data;
-                console.log(curProduct);
+                // console.log(curProduct);
 
                 setCandle(curProduct);
             })
@@ -28,7 +28,7 @@ const HomeSecntsTotal = () => {
             .get(`${bkURL}/product/home-scents/diffusers`)
             .then((res) => {
                 let curProduct = res.data;
-                console.log(curProduct);
+                // console.log(curProduct);
 
                 setDiffuser(curProduct);
             })

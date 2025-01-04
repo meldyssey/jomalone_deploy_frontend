@@ -36,7 +36,7 @@ const CandleHomeWrap = () => {
                 //     })
                 // );
                 let curProduct = res.data;
-                console.log(curProduct);
+                // console.log(curProduct);
 
                 if (product_scent) {
                     curProduct = res.data.filter((item) => item.product_scent == `${product_scent}`);
@@ -49,12 +49,12 @@ const CandleHomeWrap = () => {
     };
     useEffect(() => {
         colognesGetAxios();
-        console.log(candles);
+        // console.log(candles);
     }, [product_scent]);
 
-    console.log(product_scent);
+    // console.log(product_scent);
     useEffect(() => {
-        console.log(comp);
+        // console.log(comp);
         if (!product_scent) {
             setComp(<CandleTotal />);
         }

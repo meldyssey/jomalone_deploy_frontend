@@ -16,7 +16,7 @@ function UnactiveMember() {
             .get(`${bkURL}/admin/member/unactivemember`)
             .then(res => {
                 setArr(res.data);
-                console.log(res.data);
+                // console.log(res.data);
                 setFilteredCustomers(res.data); // 처음에는 전체 데이터 표시
             })
             .catch(err => {

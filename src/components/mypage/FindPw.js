@@ -50,7 +50,7 @@ function FindPw() {
         }
         try {
             const res = await axios.post(`${bkURL}/resetPw`, { email, newPassword, newPassword2 });
-            console.log(email, newPassword, newPassword2);
+            // console.log(email, newPassword, newPassword2);
 
             if (res.data.success) {
                 alert('비밀번호 변경이 완료되었습니다. 로그인 페이지로 이동합니다.');

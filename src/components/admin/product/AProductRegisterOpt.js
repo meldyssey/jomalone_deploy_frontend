@@ -14,14 +14,14 @@ const AProductRegisterOpt = () => {
 
     const productAxiosGet = () => {
         if (!product_id) {
-            console.log('id 없음');
+            // console.log('id 없음');
             return;
         }
         axios
             .get(`${bkURL}/admin/product/register/option/${product_id}`)
             .then((res) => {
-                console.log(res.data);
-                console.log(res.data.option);
+                // console.log(res.data);
+                // console.log(res.data.option);
                 setOptions(res.data.option);
                 setProduct(res.data.product[0]);
             })
@@ -38,7 +38,7 @@ const AProductRegisterOpt = () => {
         const frmData = new FormData(document.myFrm);
         // console.log(frmData);
         const data = Object.fromEntries(frmData);
-        console.log(data);
+        // console.log(data);
         if (!data.product_volume) {
             alert('제품 용량은 반드시 작성해야 합니다.');
             return;
@@ -59,11 +59,11 @@ const AProductRegisterOpt = () => {
                 },
             })
             .then((res) => {
-                console.log('옵션 추가 완료', res.data);
+                // console.log('옵션 추가 완료', res.data);
                 alert('옵션추가가 완료되었습니다.');
                 // 옵션 데이터 추가
                 const newOption = Object.fromEntries(frmData);
-                console.log(newOption);
+                // console.log(newOption);
                 productAxiosGet();
                 formRef.current.reset();
             })
@@ -73,15 +73,15 @@ const AProductRegisterOpt = () => {
     };
 
     const delGo = (product_opt_id) => {
-        console.log('delGo() 진입');
-        console.log(options);
+        // console.log('delGo() 진입');
+        // console.log(options);
 
         axios
             .delete(`${bkURL}/admin/product/register/option/${product_opt_id}`, {
                 data: { delUPfile: options.upSystem },
             })
             .then((res) => {
-                console.log('삭제완료 ', res.data);
+                // console.log('삭제완료 ', res.data);
                 alert('삭제되었습니다.');
                 productAxiosGet();
             })

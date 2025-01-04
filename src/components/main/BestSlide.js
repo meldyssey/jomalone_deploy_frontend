@@ -11,9 +11,9 @@ function BestSlide(props) {
         axios
             .get(`${bkURL}/product/`)
             .then((res) => {
-                console.log('서버 다녀옴', res.data);
+                // console.log('서버 다녀옴', res.data);
                 let curProduct = res.data.filter((item) => item.product_special == 'Best Seller');
-                console.log(curProduct);
+                // console.log(curProduct);
                 setProduct(curProduct);
             })
             .catch((err) => {

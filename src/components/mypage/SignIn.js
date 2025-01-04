@@ -55,12 +55,12 @@ function SignIn() {
 
             // 홈으로 이동
             if (email === 'admin@jomalone.kr' && customer_name === '관리자') {
-                console.log('관리자 계정으로 확인됨');
+                // console.log('관리자 계정으로 확인됨');
                 /* eslint-disable no-restricted-globals */
                 location.href = '/admin';
                 /* eslint-enable no-restricted-globals */
             } else {
-                console.log('일반 고객 계정으로 확인됨');
+                // console.log('일반 고객 계정으로 확인됨');
                 /* eslint-disable no-restricted-globals */
                 location.href = '/';
                 /* eslint-enable no-restricted-globals */

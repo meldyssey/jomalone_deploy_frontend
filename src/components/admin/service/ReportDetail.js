@@ -8,7 +8,7 @@ const bkURL = process.env.REACT_APP_BACK_URL;
 
 const ReportDetail = () => {
     const { id } = useParams(); // URL에서 ID 가져오기
-    console.log(id);
+    // console.log(id);
     const [report, setReport] = useState(null); // 신고 상세 데이터
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const ReportDetail = () => {
             axios
                 .put(`${bkURL}/reports/hide/${review_no}/${report_no}`)
                 .then((res) => {
-                    console.log('정보수정 성공 ', res.data);
+                    // console.log('정보수정 성공 ', res.data);
                     alert(`신고되었습니다.`);
                     navigate(`/admin/reports`);
                 })

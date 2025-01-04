@@ -26,7 +26,7 @@ const AReviewList = () => {
         const fetchReviews = async () => {
             try {
                 const response = await axios.get(`${bkURL}/review`);
-                console.log('응답 데이터:', response.data); // 응답 데이터 확인
+                // console.log('응답 데이터:', response.data); // 응답 데이터 확인
                 const reviewData = Array.isArray(response.data) ? response.data : [];
                 setReviews(reviewData); // 상태 업데이트
             } catch (err) {
@@ -39,7 +39,7 @@ const AReviewList = () => {
     }, []);
 
     const handleDetailClick = (id) => {
-        console.log('전달된 ID:', id); // 클릭한 리뷰의 ID 확인
+        // console.log('전달된 ID:', id); // 클릭한 리뷰의 ID 확인
         navigate(`/admin/areviewdetail/${id}`); // 상세보기 페이지로 이동
     };
     if (error) return <p>{error}</p>;

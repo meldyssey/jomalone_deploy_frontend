@@ -35,7 +35,7 @@ const BodyCareHomeWrap = () => {
                 //     })
                 // );
                 let curProduct = res.data;
-                console.log(curProduct);
+                // console.log(curProduct);
 
                 if (product_category_thr) {
                     curProduct = res.data.filter((item) => item.product_category_thr == `${product_category_thr}`);
@@ -48,13 +48,13 @@ const BodyCareHomeWrap = () => {
     };
     useEffect(() => {
         colognesGetAxios();
-        console.log(bodyCare);
+        // console.log(bodyCare);
         window.scrollTo(0, 0);
     }, [product_category_thr]);
 
-    console.log(product_category_thr);
+    // console.log(product_category_thr);
     useEffect(() => {
-        console.log(comp);
+        // console.log(comp);
         if (!product_category_thr) {
             setComp(<BodyCareTotal />);
         }

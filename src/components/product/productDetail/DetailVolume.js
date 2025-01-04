@@ -22,7 +22,7 @@ const DetailVolume = ({ product_id }) => {
         axios
             .get(`${bkURL}/product/volume/${product_id}`)
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setVolume(res.data);
             })
             .catch((err) => {

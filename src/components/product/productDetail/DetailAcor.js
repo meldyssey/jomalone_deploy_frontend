@@ -16,7 +16,7 @@ const DetailAcor = () => {
     };
     const productGetAxios = () => {
         if (!product_opt_id) {
-            console.log("데이터 없음");
+            // console.log("데이터 없음");
             return;
         }
         axios

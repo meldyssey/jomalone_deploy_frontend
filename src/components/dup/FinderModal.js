@@ -60,7 +60,7 @@ const FinderModal = ({ openModal, setOpenModal, finderData }) => {
 
     useEffect(() => {}, [finalResult]);
 
-    console.log(score);
+    // console.log(score);
 
     return (
         <div className={styles.overlay}>

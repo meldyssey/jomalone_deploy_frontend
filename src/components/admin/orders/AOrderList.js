@@ -105,11 +105,11 @@ function OrderList(props) {
     // 검색어 검색 함수
     const searchGo = (me) => {
         me.preventDefault();
-        console.log('submitGo 진입');
+        // console.log('submitGo 진입');
         const frmData = new FormData(document.myFrm);
-        console.log(frmData);
+        // console.log(frmData);
         const data = Object.fromEntries(frmData);
-        console.log('order 검색:', data);
+        // console.log('order 검색:', data);
 
         Object.keys(data).forEach((key) => {
             if (data[key] === '') {
@@ -126,7 +126,7 @@ function OrderList(props) {
         axios
             .post(`${bkURL}/admin/order/search`, data)
             .then((res) => {
-                console.log('검색 완료', res.data);
+                // console.log('검색 완료', res.data);
 
                 const dataText = ['주문완료', '배송중', '배송완료'];
 

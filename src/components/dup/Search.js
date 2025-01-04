@@ -9,11 +9,11 @@ const Search = () => {
     const [text, setText] = useState('');
     const searchGo = (me) => {
         me.preventDefault();
-        console.log('submitGo 진입');
+        // console.log('submitGo 진입');
         const frmData = new FormData(document.myFrm);
-        console.log(frmData);
+        // console.log(frmData);
         const data = Object.fromEntries(frmData);
-        console.log(data);
+        // console.log(data);
 
         Object.keys(data).forEach((key) => {
             if (data[key] === '') {
@@ -29,7 +29,7 @@ const Search = () => {
         axios
             .post(`http://localhost:5001/product/search`, data)
             .then((res) => {
-                console.log('검색 완료');
+                // console.log('검색 완료');
 
                 setProduct(res.data);
                 setText('해당하는 제품이 존재하지 않습니다.');
@@ -39,7 +39,7 @@ const Search = () => {
             });
     };
     useEffect(() => {
-        console.log('ProductCard 동작');
+        // console.log('ProductCard 동작');
     }, [product]);
 
     return (

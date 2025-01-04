@@ -50,9 +50,9 @@ function MemberList(props) {
             return;
         }
         try {
-            console.log('탈퇴회원 아이디 확인:', selectedCustomers);
+            // console.log('탈퇴회원 아이디 확인:', selectedCustomers);
             const res = await axios.post(`${bkURL}/admin/member/moveToDeleted`, { customer_ids: selectedCustomers });
-            console.log(`탈퇴처리`, res.data);
+            // console.log(`탈퇴처리`, res.data);
 
             alert(`탈퇴처리 되었습니다.`, res.data);
             setArr(prev => prev.map(member => (selectedCustomers.includes(member.customer_id) ? { ...member } : member)));

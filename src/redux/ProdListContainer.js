@@ -19,7 +19,7 @@ export default function ProdListContainer() {
             const res = await axios.get(`${bkURL}/product`, {
                 withCredentials: true,
             });
-            console.log("서버 다녀옴", res.data);
+            // console.log("서버 다녀옴", res.data);
             dispatch(getProdSuccess(res.data));
         } catch (error) {
             console.error("Axios 에러 발생:", error);
